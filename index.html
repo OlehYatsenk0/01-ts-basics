@@ -8,5 +8,31 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
+
+    <h1>Список завдань</h1>
+    <ul>
+      <li><button onclick="loadTask(1)">Завдання 1</button></li>
+      <li><button onclick="loadTask(2)">Завдання 2</button></li>
+      <li><button onclick="loadTask(3)">Завдання 3</button></li>
+      <li><button onclick="loadTask(4)">Завдання 4</button></li>
+      <li><button onclick="loadTask(5)">Завдання 5</button></li>
+      <li><button onclick="loadTask(6)">Завдання 6</button></li>
+      <li><button onclick="loadTask(7)">Завдання 7</button></li>
+      <li><button onclick="loadTask(8)">Завдання 8</button></li>
+    </ul>
+    
+    <script type="module">
+      window.loadTask = async function (taskNumber) {
+        try {
+          const module = await import(`./src/task-${taskNumber}.ts`);
+          console.clear();
+          console.log(`✅ Завантажено task-${taskNumber}.ts`);
+        } catch (error) {
+          console.error(`❌ Не вдалося завантажити task-${taskNumber}.ts`, error);
+        }
+      };
+    </script>
+    
   </body>
+
 </html>
